@@ -20,7 +20,7 @@ const RAW_STEPS: Step[] = [
     id: "arch",
     title: "Arch — Purpose",
     xy: { x: 48, y: 7.5 },
-    icon: "/Arch.png",
+    icon: "/arch.png",
     size: 65,
     bullets: [
       "The First Amendment provides the right to freedom of expression, speech, and peaceful assembly.",
