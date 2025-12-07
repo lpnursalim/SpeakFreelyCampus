@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "next": "^16.0.7",
-    "openai": "^6.10.0"
-  }
-}
