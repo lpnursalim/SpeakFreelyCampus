@@ -1,4 +1,8 @@
 @import "../styles/theme.css";
+:root {
+  --map-window-h: clamp(800px, 95vh, 1250px);
+  --map-stage-h: 1900px;
+}
 
 *,
 *::before,

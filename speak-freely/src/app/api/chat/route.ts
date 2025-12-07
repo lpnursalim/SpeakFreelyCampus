@@ -48,9 +48,9 @@ export async function POST(req: Request) {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       temperature: 0.3,
-      // Can also set max_tokens here if you want tighter cost control
-      messages,
+      messages: [...messages],
     });
+    
 
     const msg =
       completion.choices?.[0]?.message ?? {

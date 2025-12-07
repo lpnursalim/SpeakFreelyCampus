@@ -1,14 +1,8 @@
-:root{
-  --map-window-h: clamp(800px, 95vh, 1250px);
-  /*--map-stage-h: 1900px;*/
-  --sticky-h: 92px;
-
-  --color-border:#e6e6e6;
-  --color-text-primary:#161616;
-  --color-text-secondary:#51555b;
-  --color-arch-red:#a82a27;
-  --map-aspect: 0.7518;
+.section {
+  position: relative;
+  width: 100%;
 }
+
 
 .section{ background:#fff; }
 
