@@ -1,0 +1,10 @@
+[
+  { "id": "map",  "label": "Map",  "href": "/#map"  },
+  { "id": "info", "label": "Info", "href": "/#info" },
+  { "id": "gpt",  "label": "GPT",
+    "href": "https://chatgpt.com/g/g-68be0b2e118c81918c1cab086bf8a48d-speak-freely-uga-free-speech-assistant",
+    "external": true
+  }
+]
+
+  

@@ -1,0 +1,203 @@
+:root{
+  --map-window-h: clamp(800px, 95vh, 1250px);
+  /*--map-stage-h: 1900px;*/
+  --sticky-h: 92px;
+
+  --color-border:#e6e6e6;
+  --color-text-primary:#161616;
+  --color-text-secondary:#51555b;
+  --color-arch-red:#a82a27;
+  --map-aspect: 0.7518;
+}
+
+.section{ background:#fff; }
+
+/* full-bleed */
+.shell{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+/* the scrollable viewport */
+.scroll{
+  height:var(--map-window-h);
+  overflow-y:auto;
+  overflow-x:hidden; /* removes the horizontal gutter */
+  -webkit-overflow-scrolling:touch;
+  background:#fafafa;
+  margin-top:-60px;
+  margin-bottom:-56px;
+  position:relative;
+}
+
+.sticky{
+  position:sticky;
+  top:0;
+  z-index:100;
+  width:100%;
+  background:#e9e9e9;
+  border-bottom:1px solid var(--color-border);
+  border-top:1px solid var(--color-border);
+}
+.stickyInner{
+  max-width:1200px;
+  margin-inline:auto;
+  padding:1.1rem 1rem;
+}
+.heading{
+  font-family:var(--font-display);
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-size:clamp(1.4rem,1rem + 1.3vw,2rem);
+  margin:0 0 .35rem;
+  color:var(--color-text-primary);
+}
+.sub{ margin:0; color:var(--color-text-secondary); }
+
+/* tall map stage */
+.stage{
+  position:relative;
+  width:100%;
+  aspect-ratio: var(--map-aspect);
+  height:var(--map-stage-h);
+  overflow:visible;
+  isolation:isolate; /* own stacking context */
+  contain:paint; /* children won't enlarge scroll area */
+}
+
+.mapImage{
+  position:absolute;
+  inset:0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position:center top;
+  transform-origin:center top;
+  opacity:.98;
+  z-index:0;
+}
+
+/* pins + cards */
+.marker{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  z-index:1;
+}
+.markerActive{ z-index:9999; }     /* open group floats above neighbors */
+
+.pin{
+  all:unset;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  width:72px;
+  height:72px;
+  transition:transform 140ms ease;
+  z-index:2;
+}
+.pin:hover{ transform:translateY(-2px) scale(1.03); }
+.pin:focus-visible{
+  outline:3px solid color-mix(in oklab, var(--color-arch-red,#a82a27) 45%, white);
+  outline-offset:2px;
+}
+.pinImg{
+  width:100%;
+  height:100%;
+  object-fit: contain; /* keeps icon aspect ratio */
+}
+
+/* popover card */
+.card{
+  position:absolute;
+  top:0;
+  opacity:0;
+  pointer-events:none;
+
+  width:min(640px, calc(100vw - 40px));
+  max-width:min(660px, calc(100vw - 48px));
+  padding:1rem 1.1rem;
+
+  border:1px solid var(--color-border);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+  transition:opacity 160ms ease, transform 160ms ease;
+  z-index:3;
+
+  /* offsets injected from TS to keep the card fully visible */
+  --card-shift-x:0px;
+  --card-shift-y:0px;
+
+  /* default sits vertically centered on the pin’s y */
+  transform:translateY(-50%) translate(var(--card-shift-x), var(--card-shift-y)) scale(.98);
+}
+
+/* open to the right by default… */
+.cardRight{ left:88px; right:auto; }
+/* …but flip on right-third of map */
+.cardLeft{ right:88px; left:auto; }
+
+.cardOpen{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(-50%) translate(var(--card-shift-x), var(--card-shift-y)) scale(1);
+}
+
+.cardTitle{
+  font-family:var(--font-display);
+  font-size:1.06rem;
+  letter-spacing:.4px;
+  margin:0 0 .5rem;
+  color:var(--color-text-primary);
+}
+.cardList{
+  margin:.25rem 0 0;
+  padding-left:1.05rem;
+  display:grid;
+  gap:.38rem;
+}
+.cardList li{ color:var(--color-text-secondary); line-height:1.55; }
+
+/* mobile fallback */
+.mobileList{ display:none; }
+@media (max-width:768px){
+  .stage{ display:none; }
+  .mobileList{
+    display:grid;
+    gap:.75rem;
+    width:100%;
+    padding:1rem;
+    background:#fff;
+  }
+  .mobileItem{
+    border:1px solid var(--color-border);
+    border-radius:14px;
+    background:#f8f9fa;
+    overflow:hidden;
+  }
+  .mobileHeader{
+    all:unset;
+    cursor:pointer;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:.75rem;
+    align-items:center;
+    padding:.9rem 1rem;
+  }
+  .mobileHeader:focus-visible{
+    outline:3px solid color-mix(in oklab, var(--color-arch-red,#a82a27) 45%, white);
+    outline-offset:2px;
+  }
+  .mobileIcon{ width:40px; height:40px; }
+  .mobileTitle{ font-family:var(--font-display); letter-spacing:.4px; }
+  .mobileCard{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 200ms ease;
+    background:#fff;
+    border-top:1px solid var(--color-border);
+  }
+  .mobileCardOpen{ max-height:740px; }
+  .mobileCard .cardList{ padding:.75rem 1rem 1rem; }
+}

@@ -1,0 +1,124 @@
+/* ==========================================================
+   Speak Freely Theme Variables
+   Source: Brand Guide (Campus Cream, Arch Red, etc.)
+   ========================================================== */
+
+   :root {
+    /* ---------- COLORS ---------- */
+    --color-campus-cream: #eff3d4;
+    --color-arch-red: #a82a27;
+    --color-founders-green: #556f62;
+    --color-asphalt-black: #272628;
+    --color-library-light: #a8dac9;
+    --color-study-sage: #82a891;
+    --color-white: #ffffff;
+    --color-offwhite: #fafafa;
+  
+    /* ---------- TEXT ---------- */
+    --color-text-primary: var(--color-asphalt-black);
+    --color-text-secondary: var(--color-founders-green);
+    --color-text-inverse: var(--color-white);
+  
+    /* ---------- BACKGROUNDS ---------- */
+    --color-bg-body: #ffffff;
+    --color-text-primary: #111111;
+    --color-text-secondary: #4b5563;
+    --color-text-inverse: #ffffff;
+  
+    --color-accent: #111111;        /* simple black links for now */
+    --color-accent-hover: #000000;
+  
+    --color-border: #e5e7eb;
+  
+    /* ---------- ACCENTS ---------- */
+    --color-accent: var(--color-arch-red);
+    --color-accent-hover: #8c201d;
+    --color-border: rgba(39, 38, 40, 0.1);
+  
+    /* ---------- TYPOGRAPHY ---------- */
+    --font-display: var(--font-staatliches, "Staatliches", sans-serif);
+    --font-body: var(--font-poppins, "Poppins", sans-serif);
+  
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.5rem;    /* 24px */
+    --font-size-2xl: 2rem;     /* 32px */
+    --font-size-3xl: 3rem;     /* 48px */
+  
+    --line-height-tight: 1.1;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.7;
+  
+    /* ---------- SPACING SCALE ---------- */
+    --space-xxs: 0.25rem;   /* 4px */
+    --space-xs: 0.5rem;     /* 8px */
+    --space-sm: 0.75rem;    /* 12px */
+    --space-md: 1rem;       /* 16px */
+    --space-lg: 1.5rem;     /* 24px */
+    --space-xl: 2rem;       /* 32px */
+    --space-2xl: 3rem;      /* 48px */
+    --space-3xl: 4rem;      /* 64px */
+  
+    /* ---------- BORDERS & RADIUS ---------- */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+  
+    /* ---------- SHADOWS ---------- */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    /* ---------- BREAKPOINTS ---------- */
+    --bp-sm: 480px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+  
+    /* ---------- CONTAINERS ---------- */
+    --max-width: 1200px;
+    --gutter: var(--space-md);
+  }
+  
+  
+  /* ==========================================================
+     Utility Defaults
+     ========================================================== */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-bg-body);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  

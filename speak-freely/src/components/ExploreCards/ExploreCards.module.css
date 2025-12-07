@@ -1,0 +1,115 @@
+.section {
+    padding-block: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--color-text-primary);
+
+    text-align: left;
+    width: 100%;
+    max-width: 1200px; /* same as grid max-width */
+    margin-inline: auto; /* keeps it centered within the same container width */
+    padding-inline: 1rem;
+  }
+  
+  .grid {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px; /* keeps centered on large screens */
+  }
+  
+  @media (min-width: 700px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Entire card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+  
+  /* Rounded rectangle (larger and uniform) */
+  .frame {
+    position: relative;
+    width: clamp(260px, 28vw, 340px); /* scales nicely */
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    background: #f5f6f7;
+    overflow: hidden;
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  }
+  
+  .image {
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .card:hover .frame {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    border-color: #ddd;
+  }
+  
+  .card:focus-visible .frame {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 35%, white);
+    border-color: var(--color-accent);
+  }
+  
+  /* Caption of card */
+  .meta {
+    text-align: center;
+    padding-top: 1rem;
+    max-width: 320px;
+  }
+  
+  .title {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
+    color: var(--color-text-primary);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.8px;
+  }
+  
+  .desc {
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 auto;
+  }
+  

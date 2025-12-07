@@ -1,0 +1,192 @@
+/* Floating action button */
+.fab {
+    position: fixed;
+    right: clamp(12px, 2vw, 20px);
+    bottom: clamp(12px, 2vw, 20px);
+    z-index: 70;
+    width: 85px;
+    height: 85px;
+    border-radius: 999px;
+    background: var(--color-arch-red, #a82a27);
+    border: 1px solid color-mix(in oklab, #000 8%, transparent);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+  .fab:hover { transform: translateY(-2px); }
+  .fab:active { transform: translateY(0); }
+  .fabHidden { opacity: 0; pointer-events: none; }
+  
+  .fabIcon {
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+  }
+  
+  /* Panel */
+  .panel {
+    position: fixed;
+    right: clamp(12px, 2vw, 20px);
+    bottom: clamp(12px, 2vw, 20px);
+    z-index: 80;
+    width: clamp(320px, 32vw, 420px);
+    height: min(70vh, 720px);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+    transform-origin: bottom right;
+    transform: scale(0.98) translateY(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 180ms ease, opacity 180ms ease;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .panelOpen {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .headerBrand {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .brandLogo {
+    height: 24px;
+    width: auto;
+  }
+  .headerTitle {
+    font-family: var(--font-display);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+  .minimize {
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    padding: 6px 8px;
+    cursor: pointer;
+    color: var(--color-text-primary);
+  }
+  
+/* --- message list --- */
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+/* --- message bubble (common) --- */
+.msg {
+  display: inline-block;           /* size to content */
+  max-width: min(80%, 36rem);      /* keep readable width */
+  padding: 12px 14px;
+  border-radius: 16px;
+  line-height: 1.4;
+  font-size: 1rem;
+  word-break: break-word;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+/* user vs assistant alignment + color */
+.user {
+  align-self: flex-end;
+  background: var(--color-campus-cream, #f6f9e8);
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+.assistant {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+/* --- typing indicator bubble --- */
+.typingBubble {
+  display: inline-flex;
+  gap: 6px;
+  padding: 10px 12px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8a8a8a;
+  opacity: 0.4;
+  animation: chat-bounce 1.2s infinite ease-in-out;
+}
+.dot:nth-child(2) { animation-delay: .15s; }
+.dot:nth-child(3) { animation-delay: .30s; }
+
+@keyframes chat-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .35; }
+  40% { transform: translateY(-4px); opacity: .9; }
+}
+
+/* --- input row (unchanged; include if you need) --- */
+.inputRow {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--color-border, #e9e9e9);
+}
+
+.input {
+  flex: 1;
+  min-height: 44px;
+  max-height: 160px;
+  resize: vertical;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,.1);
+  padding: 10px 12px;
+  font: inherit;
+  outline: none;
+}
+
+.input:disabled { opacity: .6; }
+
+.send {
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  min-width: 84px;
+  height: 44px;
+  font-weight: 600;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.send:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+  .send:hover { filter: brightness(1.05); }
+  
+  /* Mobile tweaks */
+  @media (max-width: 480px) {
+    .panel {
+      width: calc(100vw - 20px);
+      height: min(70vh, 80vh);
+    }
+  }
+  
